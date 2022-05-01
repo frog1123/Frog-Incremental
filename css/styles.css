@@ -6,7 +6,7 @@ button {
     cursor: pointer;
 }
 h1, h2, h3, h4, h5, h6, p {
-    font-family: 'Arial', monospace;
+    font-family: 'Arial';
     font-weight: 200;
     color: white;
 }

@@ -8,4 +8,4 @@ function updateUI() {
     setTimeout(updateUI, 50);
 };
 
-document.getElementById("btn-frog").onclick = () => player.frogAmount = player.frogAmount.add('1');
+// document.getElementById("btn-frog").onclick = () => player.frogAmount = player.frogAmount.add('1');
