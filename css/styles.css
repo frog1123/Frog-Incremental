@@ -10,3 +10,21 @@ h1, h2, h3, h4, h5, h6, p {
     font-weight: 200;
     color: white;
 }
+.btn-can-afford {
+  border-color: #127a20;
+}
+.btn-can-afford:hover {
+  background-color: #5ac46733 !important;
+}
+.btn-cant-afford {
+  border-color: #c41f3d;
+}
+.btn-cant-afford:hover {
+  background-color: #b84b5f33 !important;
+}
+.line {
+  width: 100%;
+  height: 2px;
+  justify-self: center;
+  background-color: #4f5054;
+}

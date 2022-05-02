@@ -1,0 +1,15 @@
+#multiply-btn-grid{
+    display: grid;
+    width: max-content;
+    grid-gap: 5px;
+    grid-template-columns: 50% 50%;
+    margin-bottom: 5px;
+}
+
+.multiply-buy-btn {
+    width: 150px;
+    height: 40px;
+    background-color: #1d1d1d;
+    border-style: solid;
+    border-radius: 10px;
+}
