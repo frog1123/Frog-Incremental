@@ -4,7 +4,7 @@ function updatePondUI(pond) {
     if (pond === 1) document.getElementById("pond-t1-gen-txt").innerHTML = `Generating ${fvnd(player.ponds.frog.tier1.lvl.mul(player.ponds.frog.tier1.mult))} Frog${player.ponds.frog.tier1.lvl.mul(player.ponds.frog.tier1.mult).neq('1') ? "s" : ""}/s`;
     else document.getElementById(`pond-t${pond}-gen-txt`).innerHTML = `Generating ${fvnd(player.ponds.frog.tier2.lvl.mul(player.ponds.frog[`tier${1}`].mult))} ${pondnum[pond - 2]} Pond${player.ponds.frog[`tier${pond}`].lvl.mul(player.ponds.frog[`tier${pond}`].mult).neq('1') ? "s" : ""}/s`;
 
-    document.getElementById(`pond-t${pond}-amount`).innerHTML = `${fvnd(player.ponds.frog[`tier${pond}`].lvl)} ×${fv(player.ponds.frog[`tier${pond}`].mult)} (x)`;
+    document.getElementById(`pond-t${pond}-amount`).innerHTML = `${fvnd(player.ponds.frog[`tier${pond}`].lvl)} ×${fv(player.ponds.frog[`tier${pond}`].mult)} (${player.ponds.frog[`tier${pond}`].amountBought})`;
     document.getElementById(`pond-t${pond}-buy-btn-txt`).innerHTML = `Cost: ${fv(player.ponds.frog[`tier${pond}`].cost)}`;
 
     if (player.frogAmount.gte(player.ponds.frog[`tier${pond}`].cost)) {
@@ -32,7 +32,7 @@ function upgradePond(pond) {
 function generatePonds() {
     var speed = 1000 / player.devsettings.updateSpeed;
 
-    player.frogAmount = player.frogAmount.add(player.ponds.frog.tier1.lvl.div(speed));
+    player.frogAmount = player.frogAmount.add(player.ponds.frog.tier1.lvl.div(speed).mul(player.ponds.frog.multiplier.lvl));
 
-    player.ponds.frog.tier1.lvl = player.ponds.frog.tier1.lvl.add(player.ponds.frog.tier2.lvl.div(speed));
+    player.ponds.frog.tier1.lvl = player.ponds.frog.tier1.lvl.add(player.ponds.frog.tier2.lvl.div(speed).mul(player.ponds.frog.multiplier.lvl));
 }

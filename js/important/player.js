@@ -1,5 +1,5 @@
 var player = {
-    frogAmount: new Decimal('10'),
+    frogAmount: new Decimal('1e4'),
     ponds: {
         frog: {
             multiplier: {
