@@ -1,4 +1,4 @@
 setInterval(
     () => generatePonds(),
-    player.devsettings.updateSpeed
+    player.devSettings.updateSpeed
 )

@@ -1,5 +1,5 @@
 var player = {
-    frogAmount: new Decimal('10'),
+    frogAmount: new Decimal('1e100'),
     ponds: {
         frog: {
             higestTier: 3,
@@ -65,7 +65,7 @@ var player = {
     settings: {
         uiUpdateSpeed: 100
     },
-    devsettings: {
+    devSettings: {
         updateSpeed: 100
     }
 }
