@@ -39,19 +39,22 @@ function buyPondMultiplier() {
         player.ponds.frog.multiplier.lvl = player.ponds.frog.multiplier.lvl.mul(player.ponds.frog.multiplier.effectiveness);
     };
 };
-function buyTriangleMultiplierMax() {
+function buyPondMultiplierMax() {
     if (player.frogAmount.eq('0')) {
         return;
     };
     if (pondMultiplerCanBuyAmount.gt('0')) {
         player.ponds.frog.multiplier.cost = player.ponds.frog.multiplier.cost.mul(Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount));
         player.frogAmount = player.frogAmount.sub(Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount).mul("100"))
+        .add(pondMultiplerCanBuyAmount.gt('1e10') ? '0' : new Decimal('0')
         .sub(pondMultiplerCanBuyAmount.gt('1') ? Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount).mul('10') : '0')
         .sub(pondMultiplerCanBuyAmount.gt('2') ? Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount) : '0')
         .sub(pondMultiplerCanBuyAmount.gt('3') ? Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount).div('10') : '0')
         .sub(pondMultiplerCanBuyAmount.gt('4') ? Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount).div("100") : '0')
-        .add(Decimal.pow('10', pondMultiplerCanBuyAmount).sub(Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount)));
+        .add(Decimal.pow('10', pondMultiplerCanBuyAmount).sub(Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount))));
 
         player.ponds.frog.multiplier.lvl = player.ponds.frog.multiplier.lvl.mul(Decimal.pow(player.ponds.frog.multiplier.effectiveness, pondMultiplerCanBuyAmount));
+
+        buyPondMultiplier();
     };
 };

@@ -5,10 +5,23 @@
     grid-template-columns: 50% 50%;
     margin-bottom: 5px;
 }
-
 .multiply-buy-btn {
     width: 150px;
     height: 40px;
+    background-color: #1d1d1d;
+    border-style: solid;
+    border-radius: 8px;
+}
+#river-amount-txt {
+    margin: 0;
+}
+#river-require-txt {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+#river-buy-btn {
+    width: 350px;
+    height: 120px;
     background-color: #1d1d1d;
     border-style: solid;
     border-radius: 10px;

@@ -4,7 +4,7 @@
     width: 100%;
     align-items: center;
 }
-.pond-item:nth-child(odd) {
+.pond-item:nth-child(even) {
     background-color: #47474733;
 }
 .pond-item .pond-item-buy-btn {
@@ -26,7 +26,27 @@
     grid-row: 1;
 }
 .pond-item-info h3, .pond-item-info h4 {
+    display: flex;
+    align-items: center;
     justify-self: left;
     margin: 0;
     padding: 5px;
+}
+.pond-multiply-txt {
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 5px;
+}
+#pond-buy-type-toggle-btn {
+    width: 150px;
+    height: 40px;
+    background-color: #1d1d1d;
+    border-color: #4f5054;
+    border-style: solid;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+#pond-buy-type-toggle-btn-txt {
+    margin: 0;
 }

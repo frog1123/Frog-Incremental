@@ -19,6 +19,16 @@
     h4 {
         font-size: 12px;
     }
+    .pond-multiply-txt {
+        font-size: 10px !important;
+    }
+    #river-buy-btn {
+        width: 250px;
+        height: 100px;
+    }
+    #river-buy-btn-txt {
+        font-size: 14px;
+    }
 }
 @media screen and (max-width: 480px) {
     h1 {
@@ -33,11 +43,22 @@
     h4 {
         font-size: 8px;
     }
+    .pond-multiply-txt {
+        font-size: 8px !important;
+        margin-left: 3px;
+    }
     .pond-item .pond-item-buy-btn {
         border-radius: 10px !important;
     }
     .multiply-buy-btn {
         width: 120px;
         height: 35px;
+    }
+    #river-buy-btn {
+        width: 200px;
+        height: 80px;
+    }
+    #river-buy-btn-txt {
+        font-size: 12px;
     }
 }
