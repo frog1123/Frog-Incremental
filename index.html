@@ -20,98 +20,106 @@
 </head>
 <body>
     <center>
-        <div style="display: grid; grid-template-rows: 50% 50%; grid-template-columns: 50% 50%;">
-            <button id="save-btn" style="height: 50px">SAVE</button>
-            <button id="load-btn" style="height: 50px">LOAD</button>
-            <button id="import-btn" style="height: 50px">IMPORT</button>
-            <button id="export-btn" style="height: 50px">EXPORT</button>
-        </div>
         <h1 id="frog-amount-txt" style="margin-bottom: 0;">x Frogs</h1>
         <h2 id="frog-gain-txt" style="margin-top: 0;">Gaining x Frogs/s</h2>
-        <div id="multiply-btn-grid">
-            <button id="pond-multiply-buy-btn" class="multiply-buy-btn"><h4 id="pond-multiply-buy-btn-txt" style="display: inline">Cost: x</h4></button>
-            <button id="pond-multiply-buy-max-btn" class="multiply-buy-btn"><h4 id="pond-multiply-buy-btn-max-txt" style="display: inline">Buy max (x)</h4></button>
-        </div>
-        <h3 style="margin: 0;">
-            Multiply all pond effectivness by <span id="pond-multiply-effectiveness-txt" style="font-weight: bold">×x</span>
-        </h3>
-        <h3 style="margin: 0;">
-            Current multiplier: <span id="pond-multiply-current-mult-txt" style="font-weight: bold">×x</span>
-        </h3>
-        <button id="pond-buy-type-toggle-btn">
-            <h4 id="pond-buy-type-toggle-btn-txt">Buy type: x</h4>
-        </button>
-        <div class="line"></div>
-        <div id="ponds-grid">
-            <div id="pond-t1-div" class="pond-item">
-                <div class="pond-item-info">
-                    <h3>1st Pond <span class="pond-multiply-txt" id="pond-t1-mult-txt">×x (x)</span></h3>
-                    <h4 id="pond-t1-gen-txt">Generating x Frogs/s</h4>
-                </div>
-                <h3 id="pond-t1-amount" class="pond-item-amount">x</h3>
-                <button id="pond-t1-buy-btn" class="pond-item-buy-btn">
-                    <h3 id="pond-t1-buy-btn-txt">Cost: x</h4>
-                </button>
+        <div id="page-1">
+            <div id="multiply-btn-grid">
+                <button id="pond-multiply-buy-btn" class="multiply-buy-btn"><h4 id="pond-multiply-buy-btn-txt" style="display: inline">Cost: x</h4></button>
+                <button id="pond-multiply-buy-max-btn" class="multiply-buy-btn"><h4 id="pond-multiply-buy-btn-max-txt" style="display: inline">Buy max (x)</h4></button>
             </div>
-            <div id="pond-t2-div" class="pond-item">
-                <div class="pond-item-info">
-                    <h3>2nd Pond <span class="pond-multiply-txt" id="pond-t2-mult-txt">×x (x)</span></h3></h3>
-                    <h4 id="pond-t2-gen-txt">Generating x 1st Pond/s</h4>
-                </div>
-                <h3 id="pond-t2-amount" class="pond-item-amount">x</h3>
-                <button id="pond-t2-buy-btn" class="pond-item-buy-btn">
-                    <h3 id="pond-t2-buy-btn-txt">Cost: x</h4>
-                </button>
-            </div>
-            <div id="pond-t3-div" class="pond-item">
-                <div class="pond-item-info">
-                    <h3>3rd Pond <span class="pond-multiply-txt" id="pond-t3-mult-txt">×x (x)</span></h3></h3>
-                    <h4 id="pond-t3-gen-txt">Generating x 2nd Pond/s</h4>
-                </div>
-                <h3 id="pond-t3-amount" class="pond-item-amount">x</h3>
-                <button id="pond-t3-buy-btn" class="pond-item-buy-btn">
-                    <h3 id="pond-t3-buy-btn-txt">Cost: x</h4>
-                </button>
-            </div>
-            <div id="pond-t4-div" class="pond-item" style="display: none;">
-                <div class="pond-item-info">
-                    <h3>4th Pond <span class="pond-multiply-txt" id="pond-t4-mult-txt">×x (x)</span></h3></h3>
-                    <h4 id="pond-t4-gen-txt">Generating x 3rd Pond/s</h4>
-                </div>
-                <h3 id="pond-t4-amount" class="pond-item-amount">x</h3>
-                <button id="pond-t4-buy-btn" class="pond-item-buy-btn">
-                    <h3 id="pond-t4-buy-btn-txt">Cost: x</h4>
-                </button>
-            </div>
-            <div id="pond-t5-div" class="pond-item" style="display: none;">
-                <div class="pond-item-info">
-                    <h3>5th Pond <span class="pond-multiply-txt" id="pond-t5-mult-txt">×x (x)</span></h3></h3>
-                    <h4 id="pond-t5-gen-txt">Generating x 4th Pond/s</h4>
-                </div>
-                <h3 id="pond-t5-amount" class="pond-item-amount">x</h3>
-                <button id="pond-t5-buy-btn" class="pond-item-buy-btn">
-                    <h3 id="pond-t5-buy-btn-txt">Cost: x</h4>
-                </button>
-            </div>
-            <div id="pond-t6-div" class="pond-item" style="display: none;">
-                <div class="pond-item-info">
-                    <h3>6th Pond <span class="pond-multiply-txt" id="pond-t6-mult-txt">×x (x)</span></h3></h3>
-                    <h4 id="pond-t6-gen-txt">Generating x 5th Pond/s</h4>
-                </div>
-                <h3 id="pond-t6-amount" class="pond-item-amount">x</h3>
-                <button id="pond-t6-buy-btn" class="pond-item-buy-btn">
-                    <h3 id="pond-t6-buy-btn-txt">Cost: x</h4>
-                </button>
-            </div>
-        </div>
-        <div>
-            <h2 id="river-amount-txt">x Rivers</h2>
-            <h3 id="river-require-txt">Requires x x Ponds</h3>
-            <button id="river-buy-btn">
-                <h2 id="river-buy-btn-txt">
-                    Local Reset to unlock the x Pond and give all ponds a ×x multiplier
-                </h2>
+            <h3 style="margin: 0;">
+                Multiply all pond effectivness by <span id="pond-multiply-effectiveness-txt" style="font-weight: bold">×x</span>
+            </h3>
+            <h3 style="margin: 0;">
+                Current multiplier: <span id="pond-multiply-current-mult-txt" style="font-weight: bold">×x</span>
+            </h3>
+            <button id="pond-buy-type-toggle-btn">
+                <h4 id="pond-buy-type-toggle-btn-txt">Buy type: x</h4>
             </button>
+            <div class="line"></div>
+            <div id="ponds-grid">
+                <div id="pond-t1-div" class="pond-item">
+                    <div class="pond-item-info">
+                        <h3>1st Pond <span class="pond-multiply-txt" id="pond-t1-mult-txt">×x (x)</span></h3>
+                        <h4 id="pond-t1-gen-txt">Generating x Frogs/s</h4>
+                    </div>
+                    <h3 id="pond-t1-amount" class="pond-item-amount">x</h3>
+                    <button id="pond-t1-buy-btn" class="pond-item-buy-btn">
+                        <h3 id="pond-t1-buy-btn-txt">Cost: x</h4>
+                    </button>
+                </div>
+                <div id="pond-t2-div" class="pond-item">
+                    <div class="pond-item-info">
+                        <h3>2nd Pond <span class="pond-multiply-txt" id="pond-t2-mult-txt">×x (x)</span></h3></h3>
+                        <h4 id="pond-t2-gen-txt">Generating x 1st Pond/s</h4>
+                    </div>
+                    <h3 id="pond-t2-amount" class="pond-item-amount">x</h3>
+                    <button id="pond-t2-buy-btn" class="pond-item-buy-btn">
+                        <h3 id="pond-t2-buy-btn-txt">Cost: x</h4>
+                    </button>
+                </div>
+                <div id="pond-t3-div" class="pond-item">
+                    <div class="pond-item-info">
+                        <h3>3rd Pond <span class="pond-multiply-txt" id="pond-t3-mult-txt">×x (x)</span></h3></h3>
+                        <h4 id="pond-t3-gen-txt">Generating x 2nd Pond/s</h4>
+                    </div>
+                    <h3 id="pond-t3-amount" class="pond-item-amount">x</h3>
+                    <button id="pond-t3-buy-btn" class="pond-item-buy-btn">
+                        <h3 id="pond-t3-buy-btn-txt">Cost: x</h4>
+                    </button>
+                </div>
+                <div id="pond-t4-div" class="pond-item" style="display: none;">
+                    <div class="pond-item-info">
+                        <h3>4th Pond <span class="pond-multiply-txt" id="pond-t4-mult-txt">×x (x)</span></h3></h3>
+                        <h4 id="pond-t4-gen-txt">Generating x 3rd Pond/s</h4>
+                    </div>
+                    <h3 id="pond-t4-amount" class="pond-item-amount">x</h3>
+                    <button id="pond-t4-buy-btn" class="pond-item-buy-btn">
+                        <h3 id="pond-t4-buy-btn-txt">Cost: x</h4>
+                    </button>
+                </div>
+                <div id="pond-t5-div" class="pond-item" style="display: none;">
+                    <div class="pond-item-info">
+                        <h3>5th Pond <span class="pond-multiply-txt" id="pond-t5-mult-txt">×x (x)</span></h3></h3>
+                        <h4 id="pond-t5-gen-txt">Generating x 4th Pond/s</h4>
+                    </div>
+                    <h3 id="pond-t5-amount" class="pond-item-amount">x</h3>
+                    <button id="pond-t5-buy-btn" class="pond-item-buy-btn">
+                        <h3 id="pond-t5-buy-btn-txt">Cost: x</h4>
+                    </button>
+                </div>
+                <div id="pond-t6-div" class="pond-item" style="display: none;">
+                    <div class="pond-item-info">
+                        <h3>6th Pond <span class="pond-multiply-txt" id="pond-t6-mult-txt">×x (x)</span></h3></h3>
+                        <h4 id="pond-t6-gen-txt">Generating x 5th Pond/s</h4>
+                    </div>
+                    <h3 id="pond-t6-amount" class="pond-item-amount">x</h3>
+                    <button id="pond-t6-buy-btn" class="pond-item-buy-btn">
+                        <h3 id="pond-t6-buy-btn-txt">Cost: x</h4>
+                    </button>
+                </div>
+            </div>
+            <div>
+                <h2 id="river-amount-txt">x Rivers</h2>
+                <h3 id="river-require-txt">Requires x x Ponds</h3>
+                <button id="river-buy-btn">
+                    <h2 id="river-buy-btn-txt">
+                        Local Reset to unlock the x Pond and give all ponds a ×x multiplier
+                    </h2>
+                </button>
+            </div>
+        </div>
+        <div id="page-2" style="display: none;">
+            <div style="display: grid; grid-template-rows: 50% 50%; grid-template-columns: 50% 50%;">
+                <button id="save-btn" style="height: 50px">SAVE</button>
+                <button id="load-btn" style="height: 50px">LOAD</button>
+                <button id="import-btn" style="height: 50px">IMPORT</button>
+                <button id="export-btn" style="height: 50px">EXPORT</button>
+            </div>
+        </div>
+        <div id="tab-grid">
+            <button id="page-1-btn" class="tab-btn"><h1>PAGE 1</h1></button>
+            <button id="page-2-btn" class="tab-btn"><h1>PAGE 2</h1></button>
         </div>
     </center>
 </body>

@@ -61,4 +61,7 @@
     #river-buy-btn-txt {
         font-size: 12px;
     }
+    #tab-grid {
+        height: 80px;
+    }
 }
