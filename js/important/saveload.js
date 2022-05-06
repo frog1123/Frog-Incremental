@@ -18,6 +18,13 @@ function loadData(data) {
     player.ponds.frog.river.costIncrease = new Decimal(data.ponds.frog.river.costIncrease)
     player.ponds.frog.river.effectiveness = new Decimal(data.ponds.frog.river.effectiveness)
 
+    player.ponds.frog.tier1.unlocked = data.ponds.frog.tier1.unlocked;
+    player.ponds.frog.tier2.unlocked = data.ponds.frog.tier2.unlocked;
+    player.ponds.frog.tier3.unlocked = data.ponds.frog.tier3.unlocked;
+    player.ponds.frog.tier4.unlocked = data.ponds.frog.tier4.unlocked;
+    player.ponds.frog.tier5.unlocked = data.ponds.frog.tier5.unlocked;
+    player.ponds.frog.tier6.unlocked = data.ponds.frog.tier6.unlocked;
+
     player.ponds.frog.tier1.lvl = new Decimal(data.ponds.frog.tier1.lvl);
     player.ponds.frog.tier2.lvl = new Decimal(data.ponds.frog.tier2.lvl);
     player.ponds.frog.tier3.lvl = new Decimal(data.ponds.frog.tier3.lvl);
@@ -32,12 +39,12 @@ function loadData(data) {
     player.ponds.frog.tier5.cost = new Decimal(data.ponds.frog.tier5.cost);
     player.ponds.frog.tier6.cost = new Decimal(data.ponds.frog.tier6.cost);
 
-    player.ponds.frog.tier1.cost = new Decimal(data.ponds.frog.tier1.costIncrease);
-    player.ponds.frog.tier2.cost = new Decimal(data.ponds.frog.tier2.costIncrease);
-    player.ponds.frog.tier3.cost = new Decimal(data.ponds.frog.tier3.costIncrease);
-    player.ponds.frog.tier4.cost = new Decimal(data.ponds.frog.tier4.costIncrease);
-    player.ponds.frog.tier5.cost = new Decimal(data.ponds.frog.tier5.costIncrease);
-    player.ponds.frog.tier6.cost = new Decimal(data.ponds.frog.tier6.costIncrease);
+    player.ponds.frog.tier1.costIncrease = new Decimal(data.ponds.frog.tier1.costIncrease);
+    player.ponds.frog.tier2.costIncrease = new Decimal(data.ponds.frog.tier2.costIncrease);
+    player.ponds.frog.tier3.costIncrease = new Decimal(data.ponds.frog.tier3.costIncrease);
+    player.ponds.frog.tier4.costIncrease = new Decimal(data.ponds.frog.tier4.costIncrease);
+    player.ponds.frog.tier5.costIncrease = new Decimal(data.ponds.frog.tier5.costIncrease);
+    player.ponds.frog.tier6.costIncrease = new Decimal(data.ponds.frog.tier6.costIncrease);
 
     player.ponds.frog.tier1.mult = new Decimal(data.ponds.frog.tier1.mult);
     player.ponds.frog.tier2.mult = new Decimal(data.ponds.frog.tier2.mult);
@@ -58,6 +65,8 @@ function loadData(data) {
 
     player.settings.uiUpdateSpeed = data.settings.uiUpdateSpeed;
     player.devsettings.updateSpeed = data.devsettings.updateSpeed;
+
+    showUnlocked();
 };
 function exportData() {
     let exportData = btoa(JSON.stringify(player));

@@ -1,5 +1,5 @@
 var player = {
-    frogAmount: new Decimal('1e100'),
+    frogAmount: new Decimal('10'),
     ponds: {
         frog: {
             higestTier: 3,

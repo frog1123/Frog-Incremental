@@ -1,13 +1,15 @@
 var pondMultiplerCanBuyAmount;
 var a, b, c, d;
 
+// cost increase doesnt work
+
 function updatePondMultiplierUI() {
     a = new Decimal(Decimal.floor(Decimal.log10(Decimal.fromComponents(1, player.frogAmount.layer, player.frogAmount.mag)))); // triangle amt
-    b = Math.pow(10, Math.floor(Math.log10(player.frogAmount.mag))) / Math.pow(10, Math.floor(Math.log10(player.ponds.frog.multiplier.cost.mag))) > 1 ? 1 : 0; // if triangle amt man > 1
+    b = Math.pow(10, Math.floor(Math.log10(player.frogAmount.mag))) / Math.pow(10, Math.floor(Math.log10(player.ponds.frog.multiplier.cost.mag))) > 1 ? '1' : '0'; // if triangle amt man > 1
     c = new Decimal(Decimal.floor(Decimal.log10(Decimal.fromComponents(1, player.ponds.frog.multiplier.cost.layer, player.ponds.frog.multiplier.cost.mag)))); // cost amt
     d = new Decimal(Decimal.log10(Decimal.fromComponents(1, player.ponds.frog.multiplier.costIncrease.layer, player.ponds.frog.multiplier.costIncrease.mag))); // cost increase 
 
-    pondMultiplerCanBuyAmount = new Decimal(a.eq(c) ? '1' : Decimal.floor(a.sub(c).div(d)));
+    pondMultiplerCanBuyAmount = new Decimal(Decimal.floor(a.sub(c.mul(d))).add('1'));
 
 
     document.getElementById("pond-multiply-buy-btn-txt").innerHTML = `Cost: ${fv(player.ponds.frog.multiplier.cost)}`;
@@ -44,14 +46,15 @@ function buyPondMultiplierMax() {
         return;
     };
     if (pondMultiplerCanBuyAmount.gt('0')) {
+        var costIncrease = player.ponds.frog.multiplier.costIncrease;
+
         player.ponds.frog.multiplier.cost = player.ponds.frog.multiplier.cost.mul(Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount));
-        player.frogAmount = player.frogAmount.sub(Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount).mul("100"))
+        player.frogAmount = player.frogAmount.sub(Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount))
         .add(pondMultiplerCanBuyAmount.gt('1e10') ? '0' : new Decimal('0')
-        .sub(pondMultiplerCanBuyAmount.gt('1') ? Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount).mul('10') : '0')
-        .sub(pondMultiplerCanBuyAmount.gt('2') ? Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount) : '0')
-        .sub(pondMultiplerCanBuyAmount.gt('3') ? Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount).div('10') : '0')
-        .sub(pondMultiplerCanBuyAmount.gt('4') ? Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount).div("100") : '0')
-        .add(Decimal.pow('10', pondMultiplerCanBuyAmount).sub(Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount))));
+        .sub(Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount).mul(costIncrease))
+        .sub(Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount).div(costIncrease))
+        .sub(Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount).div(costIncrease.mul('10')))
+        .sub(Decimal.pow(player.ponds.frog.multiplier.costIncrease, pondMultiplerCanBuyAmount).div(costIncrease.mul('100'))));
 
         player.ponds.frog.multiplier.lvl = player.ponds.frog.multiplier.lvl.mul(Decimal.pow(player.ponds.frog.multiplier.effectiveness, pondMultiplerCanBuyAmount));
 
