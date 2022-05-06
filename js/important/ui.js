@@ -7,7 +7,7 @@ window.onload = () => {
 
 function updateUI() {
     document.getElementById("frog-amount-txt").innerHTML = `${fv(player.frogAmount)} Frogs`;
-    document.getElementById("frog-gain-txt").innerHTML = `Gaining ${fv(player.ponds.frog.tier1.lvl.mul(player.ponds.frog.tier1.mult))} Frog${player.ponds.frog.tier1.lvl.mul(player.ponds.frog.tier1.mult).neq('1') ? "s" : ""}/s`;
+    document.getElementById("frog-gain-txt").innerHTML = `Gaining ${fv(player.ponds.frog.tier1.lvl.mul(player.ponds.frog.tier1.mult).mul(player.ponds.frog.river.lvl.eq('0') ? '1' : Decimal.pow(player.ponds.frog.river.effectiveness, player.ponds.frog.river.lvl)))} Frog${player.ponds.frog.tier1.lvl.mul(player.ponds.frog.tier1.mult.mul(player.ponds.frog.river.lvl.eq('0') ? '1' : Decimal.pow(player.ponds.frog.river.effectiveness, player.ponds.frog.river.lvl))).neq('1') ? "s" : ""}/s`;
 
     if (activeTab == 1) {
         updatePondsUI();

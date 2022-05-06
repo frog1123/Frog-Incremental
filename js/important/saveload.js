@@ -64,7 +64,7 @@ function loadData(data) {
 
 
     player.settings.uiUpdateSpeed = data.settings.uiUpdateSpeed;
-    player.devsettings.updateSpeed = data.devsettings.updateSpeed;
+    player.devSettings.updateSpeed = data.devSettings.updateSpeed;
 
     showUnlocked();
 };

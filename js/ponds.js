@@ -76,6 +76,8 @@ function upgradeRiver() {
 
         if (player.ponds.frog.higestTier < 6) {
             player.ponds.frog.higestTier++;
+            player.ponds.frog[`tier${player.ponds.frog.higestTier}`].unlocked = true;
+
             document.getElementById(`pond-t${player.ponds.frog.higestTier}-div`).style.display = "grid";
         }
         else {
