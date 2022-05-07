@@ -1,15 +1,19 @@
-var amount, buying, cost, costIncrease;
+var amount, buying, cost, costIncrease, extra;
 
 function updatePondMultiplierUI() {
 
     amount = new Decimal(Decimal.floor(Decimal.log10(Decimal.fromComponents(1, player.frogAmount.layer, player.frogAmount.mag)))); // frog amount
     cost = new Decimal((Decimal.floor(Decimal.log10(Decimal.fromComponents(1, player.ponds.frog.multiplier.cost.layer, player.ponds.frog.multiplier.cost.mag))))); // cost
-    
-    costIncrease = new Decimal(Decimal.log10(player.ponds.frog.multiplier.costIncrease))
+    costIncrease = new Decimal(Decimal.log10(player.ponds.frog.multiplier.costIncrease));
+
+    extra = player.frogAmount.mag > player.ponds.frog.multiplier.cost.mag && player.frogAmount.layer === player.ponds.frog.multiplier.cost.layer ? '1' : '0';
     
     buying = Decimal.floor(amount.sub(cost).div(costIncrease))
-            .add(player.ponds.frog.multiplier.costIncrease.gt('10') ? '1' : player.ponds.frog.multiplier.costIncrease.lt('10') ? '-1' : '0'); // if costincrease doesnt eq 10
+            .add(player.ponds.frog.multiplier.costIncrease.gt('10') ? '1' : player.ponds.frog.multiplier.costIncrease.lt('10') ? '-1' : '0') // if costincrease doesnt eq 10
+            .add(extra);
 
+
+    console.log(extra);
 
 
     document.getElementById("pond-multiply-buy-btn-txt").innerHTML = `Cost: ${fv(player.ponds.frog.multiplier.cost)}`;
@@ -28,6 +32,11 @@ function updatePondMultiplierUI() {
         document.getElementById("pond-multiply-buy-max-btn").classList.add("btn-can-afford");
         document.getElementById("pond-multiply-buy-max-btn").classList.remove("btn-cant-afford");
     }
+    else if (buying.lte('0') && player.frogAmount.gte(player.ponds.frog.multiplier.cost)) {
+        document.getElementById("pond-multiply-buy-btn-max-txt").innerHTML = "Buy max (1)";
+        document.getElementById("pond-multiply-buy-max-btn").classList.add("btn-can-afford");
+        document.getElementById("pond-multiply-buy-max-btn").classList.remove("btn-cant-afford");
+    }
     else {
         document.getElementById("pond-multiply-buy-btn-max-txt").innerHTML = "Buy max (0)";
         document.getElementById("pond-multiply-buy-max-btn").classList.add("btn-cant-afford");
@@ -40,18 +49,17 @@ function buyPondMultiplier() {
         player.ponds.frog.multiplier.cost = player.ponds.frog.multiplier.cost.mul(player.ponds.frog.multiplier.costIncrease);
         player.ponds.frog.multiplier.lvl = player.ponds.frog.multiplier.lvl.mul(player.ponds.frog.multiplier.effectiveness);
     };
-
-
 };
 function buyPondMultiplierMax() {
     if (player.frogAmount.eq('0')) {
         return;
     };
-    if (buying.gt('0')) {
-        player.frogAmount = player.frogAmount.sub(Decimal.pow(player.ponds.frog.multiplier.costIncrease, buying));
-        player.ponds.frog.multiplier.cost = player.ponds.frog.multiplier.cost.mul(Decimal.pow(player.ponds.frog.multiplier.costIncrease, buying));
-        player.ponds.frog.multiplier.lvl = player.ponds.frog.multiplier.lvl.mul(Decimal.pow(player.ponds.frog.multiplier.effectiveness, buying));
-
+    if (player.frogAmount.gte(player.ponds.frog.multiplier.cost)) {
+        if (buying.gt('0')) {
+            player.frogAmount = player.frogAmount.sub(Decimal.pow(player.ponds.frog.multiplier.costIncrease, buying));
+            player.ponds.frog.multiplier.cost = player.ponds.frog.multiplier.cost.mul(Decimal.pow(player.ponds.frog.multiplier.costIncrease, buying));
+            player.ponds.frog.multiplier.lvl = player.ponds.frog.multiplier.lvl.mul(Decimal.pow(player.ponds.frog.multiplier.effectiveness, buying));
+        };
         buyPondMultiplier();
     };
 };
