@@ -70,4 +70,7 @@
     #tab-grid {
         height: 80px;
     }
+    #pond-buy-type-toggle-btn, .pond-item .pond-item-buy-btn, .multiply-buy-btn, #river-buy-btn {
+        border-width: 1px;
+    }
 }
