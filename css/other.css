@@ -46,3 +46,6 @@
 .tab-btn h1 {
     margin: 0;
 }
+#pond-buy-type-toggle-btn, .pond-item .pond-item-buy-btn, .multiply-buy-btn, #river-buy-btn {
+    border-width: 2.8px;
+}

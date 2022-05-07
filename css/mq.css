@@ -5,6 +5,9 @@
     .pond-item .pond-item-buy-btn {
         width: 100%;
     }
+    #pond-buy-type-toggle-btn, .pond-item .pond-item-buy-btn, .multiply-buy-btn, #river-buy-btn {
+        border-width: 2.5px;
+    }
 }
 @media screen and (max-width: 650px) {
     h1 {
@@ -28,6 +31,9 @@
     }
     #river-buy-btn-txt {
         font-size: 14px;
+    }
+    #pond-buy-type-toggle-btn, .pond-item .pond-item-buy-btn, .multiply-buy-btn, #river-buy-btn {
+        border-width: 2px;
     }
 }
 @media screen and (max-width: 480px) {
