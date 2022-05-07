@@ -9,10 +9,11 @@ function updateUI() {
     document.getElementById("frog-amount-txt").innerHTML = `${fv(player.frogAmount)} Frogs`;
     document.getElementById("frog-gain-txt").innerHTML = `Gaining ${fv(player.ponds.frog.tier1.lvl.mul(player.ponds.frog.tier1.mult).mul(player.ponds.frog.river.lvl.eq('0') ? '1' : Decimal.pow(player.ponds.frog.river.effectiveness, player.ponds.frog.river.lvl)))} Frog${player.ponds.frog.tier1.lvl.mul(player.ponds.frog.tier1.mult.mul(player.ponds.frog.river.lvl.eq('0') ? '1' : Decimal.pow(player.ponds.frog.river.effectiveness, player.ponds.frog.river.lvl))).neq('1') ? "s" : ""}/s`;
 
-    if (activeTab == 1) {
+    if (activeTab === 1) {
         updatePondsUI();
         updatePondMultiplierUI();
         updateRiverUI();
+        updateLakeUI();
     };
 
     setTimeout(updateUI, player.settings.uiUpdateSpeed);
@@ -34,6 +35,7 @@ document.getElementById("pond-multiply-buy-btn").onclick = () => buyPondMultipli
 document.getElementById("pond-multiply-buy-max-btn").onclick = () => buyPondMultiplierMax();
 
 document.getElementById("river-buy-btn").onclick = () => upgradeRiver();
+document.getElementById("lake-buy-btn").onclick = () => upgradeLake();
 
 document.getElementById("pond-t1-buy-btn").onclick = () => upgradePond(1);
 document.getElementById("pond-t2-buy-btn").onclick = () => upgradePond(2);
@@ -48,9 +50,12 @@ document.getElementById("import-btn").onclick = () => importData();
 document.getElementById("export-btn").onclick = () => exportData();
 
 function showUnlocked() {
-    if (player.ponds.frog.tier4.unlocked) document.getElementById("pond-t4-div").style.display = "grid";
-    if (player.ponds.frog.tier5.unlocked) document.getElementById("pond-t5-div").style.display = "grid";
-    if (player.ponds.frog.tier6.unlocked) document.getElementById("pond-t6-div").style.display = "grid";
+    if (player.ponds.frog.tier4.unlocked) document.getElementById("pond-t4-div").style.display = "grid"
+    else document.getElementById("pond-t4-div").style.display = "none";
+    if (player.ponds.frog.tier5.unlocked) document.getElementById("pond-t5-div").style.display = "grid"
+    else document.getElementById("pond-t5-div").style.display = "none";
+    if (player.ponds.frog.tier6.unlocked) document.getElementById("pond-t6-div").style.display = "grid"
+    else document.getElementById("pond-t6-div").style.display = "none";
 };
 function switchTab(tab) {
     document.getElementById("page-1").style.display = "none";

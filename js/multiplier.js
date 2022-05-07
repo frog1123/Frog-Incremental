@@ -6,7 +6,7 @@ function updatePondMultiplierUI() {
     cost = new Decimal((Decimal.floor(Decimal.log10(Decimal.fromComponents(1, player.ponds.frog.multiplier.cost.layer, player.ponds.frog.multiplier.cost.mag))))); // cost
     costIncrease = new Decimal(Decimal.log10(player.ponds.frog.multiplier.costIncrease));
     
-    buying = Decimal.floor(amount.sub(cost).div(costIncrease));
+    buying = Decimal.floor(amount.sub(cost).div(costIncrease))
 
 
     document.getElementById("pond-multiply-buy-btn-txt").innerHTML = `Cost: ${fv(player.ponds.frog.multiplier.cost)}`;

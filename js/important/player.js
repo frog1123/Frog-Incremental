@@ -1,5 +1,5 @@
 var player = {
-    frogAmount: new Decimal('10'),
+    frogAmount: new Decimal('1e100'),
     ponds: {
         frog: {
             higestTier: 3,
@@ -7,12 +7,18 @@ var player = {
                 lvl: new Decimal('1'),
                 effectiveness: new Decimal('1.1'),
                 cost: new Decimal('1000'),
-                costIncrease: new Decimal('12')
+                costIncrease: new Decimal('10')
             },
             river: {
                 lvl: new Decimal('0'),
                 cost: new Decimal('20'),
                 costIncrease: new Decimal('20'),
+                effectiveness: new Decimal('2')
+            },
+            lake: {
+                lvl: new Decimal('0'),
+                cost: new Decimal('5'),
+                costIncrease: new Decimal('5'),
                 effectiveness: new Decimal('2')
             },
             tier1: {

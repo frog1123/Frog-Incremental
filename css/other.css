@@ -12,14 +12,14 @@
     border-style: solid;
     border-radius: 8px;
 }
-#river-amount-txt {
+#river-amount-txt, #lake-amount-txt{
     margin: 0;
 }
-#river-require-txt {
+#river-require-txt, #lake-require-txt {
     margin-top: 0;
     margin-bottom: 5px;
 }
-#river-buy-btn {
+#river-buy-btn, #lake-buy-btn {
     width: 350px;
     height: 120px;
     background-color: #1d1d1d;
@@ -38,7 +38,6 @@
 .tab-btn {
     border: none;
     background-color: #000000;
-    transition: 0.25s;
 }
 .tab-btn:hover {
     background-color: #f2f2f210;
@@ -46,6 +45,13 @@
 .tab-btn h1 {
     margin: 0;
 }
-#pond-buy-type-toggle-btn, .pond-item .pond-item-buy-btn, .multiply-buy-btn, #river-buy-btn {
+#pond-buy-type-toggle-btn, .pond-item .pond-item-buy-btn, .multiply-buy-btn, #river-buy-btn, #lake-buy-btn {
     border-width: 2.8px;
+}
+#prestige-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 10px;
+    width: max-content;
+    justify-content: center;
 }

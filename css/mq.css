@@ -5,7 +5,7 @@
     .pond-item .pond-item-buy-btn {
         width: 100%;
     }
-    #pond-buy-type-toggle-btn, .pond-item .pond-item-buy-btn, .multiply-buy-btn, #river-buy-btn {
+    #pond-buy-type-toggle-btn, .pond-item .pond-item-buy-btn, .multiply-buy-btn, #river-buy-btn, #lake-buy-btn {
         border-width: 2.5px;
     }
 }
@@ -25,14 +25,14 @@
     .pond-multiply-txt {
         font-size: 10px !important;
     }
-    #river-buy-btn {
-        width: 250px;
+    #river-buy-btn, #lake-buy-btn {
+        width: 235px;
         height: 100px;
     }
-    #river-buy-btn-txt {
+    #river-buy-btn-txt, #lake-buy-btn-txt {
         font-size: 14px;
     }
-    #pond-buy-type-toggle-btn, .pond-item .pond-item-buy-btn, .multiply-buy-btn, #river-buy-btn {
+    #pond-buy-type-toggle-btn, .pond-item .pond-item-buy-btn, .multiply-buy-btn, #river-buy-btn, #lake-buy-btn {
         border-width: 2px;
     }
 }
@@ -60,17 +60,17 @@
         width: 120px;
         height: 35px;
     }
-    #river-buy-btn {
-        width: 200px;
+    #river-buy-btn, #lake-buy-btn {
+        width: 180px;
         height: 80px;
     }
-    #river-buy-btn-txt {
+    #river-buy-btn-txt, #lake-buy-btn-txt {
         font-size: 12px;
     }
     #tab-grid {
         height: 80px;
     }
-    #pond-buy-type-toggle-btn, .pond-item .pond-item-buy-btn, .multiply-buy-btn, #river-buy-btn {
+    #pond-buy-type-toggle-btn, .pond-item .pond-item-buy-btn, .multiply-buy-btn, #river-buy-btn, #lake-buy-btn {
         border-width: 1px;
     }
 }

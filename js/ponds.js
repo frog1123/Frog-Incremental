@@ -85,3 +85,31 @@ function upgradeRiver() {
         }
     };
 };
+function updateLakeUI() {
+    document.getElementById("lake-amount-txt").innerHTML = `${player.ponds.frog.lake.lvl} Lake${player.ponds.frog.lake.lvl.neq('1') ? "s" : ""}`;
+    document.getElementById("lake-require-txt").innerHTML = `Requires ${player.ponds.frog.lake.cost} Rivers`;
+
+    if (player.ponds.frog.river.lvl.gte(player.ponds.frog.lake.cost)) {
+        document.getElementById("lake-buy-btn").classList.add("btn-can-afford");
+        document.getElementById("lake-buy-btn").classList.remove("btn-cant-afford");
+    }
+    else {
+        document.getElementById("lake-buy-btn").classList.add("btn-cant-afford");
+        document.getElementById("lake-buy-btn").classList.remove("btn-can-afford");
+    };
+    document.getElementById("lake-buy-btn-txt").innerHTML = `Global Reset to make rivers ×${player.ponds.frog.lake.effectiveness} effective`;
+}
+function upgradeLake() {
+    if (player.ponds.frog.river.lvl.gte(player.ponds.frog.lake.cost)) {
+        globalReset();
+
+        player.ponds.frog.tier4.unlocked = false;
+        player.ponds.frog.tier5.unlocked = false;
+        player.ponds.frog.tier6.unlocked = false;
+        showUnlocked();
+
+        player.ponds.frog.lake.lvl = player.ponds.frog.lake.lvl.add('1');
+        player.ponds.frog.river.effectiveness = player.ponds.frog.river.effectiveness.mul(player.ponds.frog.lake.lvl.eq('0') ? '1' : Decimal.pow(player.ponds.frog.lake.effectiveness, player.ponds.frog.lake.lvl));
+        player.ponds.frog.lake.cost = player.ponds.frog.lake.cost.add(player.ponds.frog.lake.costIncrease);
+    };
+};
