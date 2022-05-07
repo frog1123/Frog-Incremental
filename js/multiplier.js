@@ -1,19 +1,13 @@
-var amount, buying, cost, costIncrease, extra;
+var amount, buying, cost, costIncrease;
 
 function updatePondMultiplierUI() {
 
     amount = new Decimal(Decimal.floor(Decimal.log10(Decimal.fromComponents(1, player.frogAmount.layer, player.frogAmount.mag)))); // frog amount
     cost = new Decimal((Decimal.floor(Decimal.log10(Decimal.fromComponents(1, player.ponds.frog.multiplier.cost.layer, player.ponds.frog.multiplier.cost.mag))))); // cost
     costIncrease = new Decimal(Decimal.log10(player.ponds.frog.multiplier.costIncrease));
-
-    extra = player.frogAmount.mag > player.ponds.frog.multiplier.cost.mag && player.frogAmount.layer === player.ponds.frog.multiplier.cost.layer ? '1' : '0';
     
     buying = Decimal.floor(amount.sub(cost).div(costIncrease))
             .add(player.ponds.frog.multiplier.costIncrease.gt('10') ? '1' : player.ponds.frog.multiplier.costIncrease.lt('10') ? '-1' : '0') // if costincrease doesnt eq 10
-            .add(extra);
-
-
-    console.log(extra);
 
 
     document.getElementById("pond-multiply-buy-btn-txt").innerHTML = `Cost: ${fv(player.ponds.frog.multiplier.cost)}`;

@@ -7,7 +7,7 @@ var player = {
                 lvl: new Decimal('1'),
                 effectiveness: new Decimal('1.1'),
                 cost: new Decimal('1000'),
-                costIncrease: new Decimal('5')
+                costIncrease: new Decimal('10')
             },
             river: {
                 lvl: new Decimal('0'),
