@@ -1,4 +1,6 @@
-function updatePondUI(pond) {
+var ordernum = 0;
+
+function updatePondUI(pond, amount = new Decimal('1')) {
     var multiplier = player.ponds.frog.multiplier.lvl.mul(player.ponds.frog.river.lvl.eq('0') ? '1' : Decimal.pow(player.ponds.frog.river.effectiveness, player.ponds.frog.river.lvl));
     var pondnum = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th'];
 
@@ -7,9 +9,9 @@ function updatePondUI(pond) {
 
     document.getElementById(`pond-t${pond}-amount`).innerHTML = `${fvnd(player.ponds.frog[`tier${pond}`].lvl)}`;
     document.getElementById(`pond-t${pond}-mult-txt`).innerHTML = `×${fv(player.ponds.frog[`tier${pond}`].mult.mul(multiplier))} (${player.ponds.frog[`tier${pond}`].amountBought})`;
-    document.getElementById(`pond-t${pond}-buy-btn-txt`).innerHTML = `Cost: ${fv(player.ponds.frog[`tier${pond}`].cost)}`;
+    document.getElementById(`pond-t${pond}-buy-btn-txt`).innerHTML = `Cost: ${fv(player.ponds.frog[`tier${pond}`].cost.mul(Decimal.pow(player.ponds.frog[`tier${pond}`].costIncrease, Decimal.floor(amount.div('10')))))}`;
 
-    if (player.frogAmount.gte(player.ponds.frog[`tier${pond}`].cost)) {
+    if (player.frogAmount.gte(player.ponds.frog[`tier${pond}`].cost.mul(Decimal.pow(player.ponds.frog[`tier${pond}`].costIncrease, Decimal.floor(amount.div('10')))))) {
         document.getElementById(`pond-t${pond}-buy-btn`).classList.add("btn-can-afford");
         document.getElementById(`pond-t${pond}-buy-btn`).classList.remove("btn-cant-afford");
     }
@@ -18,15 +20,23 @@ function updatePondUI(pond) {
         document.getElementById(`pond-t${pond}-buy-btn`).classList.remove("btn-can-afford");
     };
 }
-function upgradePond(pond) {
-    if (player.frogAmount.gte(player.ponds.frog[`tier${pond}`].cost)) {
-        player.frogAmount = player.frogAmount.sub(player.ponds.frog[`tier${pond}`].cost);
-        
-        player.ponds.frog[`tier${pond}`].lvl = player.ponds.frog[`tier${pond}`].lvl.add('1');
-        player.ponds.frog[`tier${pond}`].amountBought = player.ponds.frog[`tier${pond}`].amountBought.add('1');
-        if (player.ponds.frog[`tier${pond}`].amountBought.eq('10')) {
+function upgradePond(pond, amount = new Decimal('1')) {
+    if (player.frogAmount.gte(player.ponds.frog[`tier${pond}`].cost.mul(Decimal.pow(player.ponds.frog[`tier${pond}`].costIncrease, Decimal.floor(amount.div('10')))))) {
+
+        player.frogAmount = player.frogAmount.sub(player.ponds.frog[`tier${pond}`].cost.mul(Decimal.pow(player.ponds.frog[`tier${pond}`].costIncrease, Decimal.floor(amount.div('10')))));
+
+        player.ponds.frog[`tier${pond}`].cost = player.ponds.frog[`tier${pond}`].cost.mul(Decimal.pow(player.ponds.frog[`tier${pond}`].costIncrease, Decimal.floor(amount.div('10'))));
+
+        player.ponds.frog[`tier${pond}`].lvl = player.ponds.frog[`tier${pond}`].lvl.add(amount);
+        player.ponds.frog[`tier${pond}`].amountBought = player.ponds.frog[`tier${pond}`].amountBought.add(new Decimal(amount.toString().slice(-1)));
+
+
+        if (amount.gte('10')) player.ponds.frog[`tier${pond}`].mult = player.ponds.frog[`tier${pond}`].mult.mul(Decimal.pow('2', Decimal.floor(amount.div('10'))));
+
+        if (player.ponds.frog[`tier${pond}`].amountBought.gte('10')) {
+
             player.ponds.frog[`tier${pond}`].cost = player.ponds.frog[`tier${pond}`].cost.mul(player.ponds.frog[`tier${pond}`].costIncrease);
-            player.ponds.frog[`tier${pond}`].amountBought = new Decimal('0');
+            player.ponds.frog[`tier${pond}`].amountBought = player.ponds.frog[`tier${pond}`].amountBought.sub('10');
             player.ponds.frog[`tier${pond}`].mult = player.ponds.frog[`tier${pond}`].mult.mul('2');
         };
     };
@@ -38,7 +48,7 @@ function generatePonds() {
     var pondmult = pond => player.ponds.frog[`tier${pond}`].mult;
     var mult = pond => multiplier.mul(pondmult(pond));
 
-    player.frogAmount = player.frogAmount.add(pond.tier1.lvl.div(speed).mul(pond.multiplier.lvl));
+    player.frogAmount = player.frogAmount.add(pond.tier1.lvl.div(speed).mul(mult(1)));
 
     pond.tier1.lvl = pond.tier1.lvl.add(pond.tier2.lvl.div(speed).mul(mult(2)));
     pond.tier2.lvl = pond.tier2.lvl.add(pond.tier3.lvl.div(speed).mul(mult(3)));
@@ -113,3 +123,13 @@ function upgradeLake() {
         player.ponds.frog.lake.cost = player.ponds.frog.lake.cost.add(player.ponds.frog.lake.costIncrease);
     };
 };
+function togglePondAmount() {
+    var order = ['1', '10', '100', '1000'];
+
+    if (ordernum === order.length) ordernum = 1;
+    else ordernum += 1;
+    
+    player.ponds.frog.amountToBuy = new Decimal(order[ordernum - 1]);
+
+    document.getElementById("pond-buy-type-toggle-btn-txt").innerHTML = `Buy type: ${player.ponds.frog.amountToBuy}`;
+}

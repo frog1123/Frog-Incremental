@@ -20,12 +20,12 @@ function updateUI() {
 };
 
 function updatePondsUI() {
-    updatePondUI(1);
-    updatePondUI(2);
-    updatePondUI(3);
-    updatePondUI(4);
-    updatePondUI(5);
-    updatePondUI(6);
+    updatePondUI(1, player.ponds.frog.amountToBuy);
+    updatePondUI(2, player.ponds.frog.amountToBuy);
+    updatePondUI(3, player.ponds.frog.amountToBuy);
+    updatePondUI(4, player.ponds.frog.amountToBuy);
+    updatePondUI(5, player.ponds.frog.amountToBuy);
+    updatePondUI(6, player.ponds.frog.amountToBuy);
 };
 
 document.getElementById("page-1-btn").onclick = () => switchTab(1);
@@ -37,12 +37,14 @@ document.getElementById("pond-multiply-buy-max-btn").onclick = () => buyPondMult
 document.getElementById("river-buy-btn").onclick = () => upgradeRiver();
 document.getElementById("lake-buy-btn").onclick = () => upgradeLake();
 
-document.getElementById("pond-t1-buy-btn").onclick = () => upgradePond(1);
-document.getElementById("pond-t2-buy-btn").onclick = () => upgradePond(2);
-document.getElementById("pond-t3-buy-btn").onclick = () => upgradePond(3);
-document.getElementById("pond-t4-buy-btn").onclick = () => upgradePond(4);
-document.getElementById("pond-t5-buy-btn").onclick = () => upgradePond(5);
-document.getElementById("pond-t6-buy-btn").onclick = () => upgradePond(6);
+document.getElementById("pond-buy-type-toggle-btn").onclick = () => togglePondAmount();
+
+document.getElementById("pond-t1-buy-btn").onclick = () => upgradePond(1, player.ponds.frog.amountToBuy);
+document.getElementById("pond-t2-buy-btn").onclick = () => upgradePond(2, player.ponds.frog.amountToBuy);
+document.getElementById("pond-t3-buy-btn").onclick = () => upgradePond(3, player.ponds.frog.amountToBuy);
+document.getElementById("pond-t4-buy-btn").onclick = () => upgradePond(4, player.ponds.frog.amountToBuy);
+document.getElementById("pond-t5-buy-btn").onclick = () => upgradePond(5, player.ponds.frog.amountToBuy);
+document.getElementById("pond-t6-buy-btn").onclick = () => upgradePond(6, player.ponds.frog.amountToBuy);
 
 document.getElementById("save-btn").onclick = () => saveData();
 document.getElementById("load-btn").onclick = () => loadData(JSON.parse(atob(localStorage.getItem("player"))));
