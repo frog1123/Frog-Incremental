@@ -27,10 +27,10 @@
     border-radius: 10px;
 }
 #tab-grid {
-    position: absolute;
+    position: fixed;
     display: grid;
     grid-template-columns: 50% 50%;
-    bottom: 0px;
+    bottom: 0;
     width: 100%;
     height: 100px;
     background-color: black;
